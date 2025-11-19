@@ -1,0 +1,6 @@
+<!-- kaj korar somoi  -->
+
+<!-- npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch -->
+
+<!-- r kaj sesh a deply korar age  -->
+<!-- npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --minify --content "./src/**/*.html" -->
