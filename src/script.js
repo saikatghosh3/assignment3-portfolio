@@ -18,48 +18,44 @@ btn.addEventListener("click", () => {
 
 // Typing effect for dynamic title
 
+const text = "Hi, I am Saikat Ghosh";
+const typingSpeed = 80;
+const eraseSpeed = 40;
+const repeatTimes = 25;
 
-  const text = "Hi, I am Saikat Ghosh";
-  const typingSpeed = 80;     
-  const eraseSpeed = 40;      
-  const repeatTimes = 10;     
+let index = 0;
+let count = 0;
+let isDeleting = false;
 
-  let index = 0;
-  let count = 0;
-  let isDeleting = false;
+const title = document.getElementById("dynamicTitle");
 
-  const title = document.getElementById("dynamicTitle");
+function typeLoop() {
+  if (count >= repeatTimes) return;
 
-  function typeLoop() {
-    if (count >= repeatTimes) return; 
+  if (!isDeleting) {
+    title.textContent = text.slice(0, index);
+    index++;
 
-    if (!isDeleting) {
-      title.innerHTML = text.slice(0, index);
-      index++;
-
-      if (index > text.length) {
-        isDeleting = true;
-        setTimeout(typeLoop, 1000); 
-        return;
-      }
-    } else {
-      title.innerHTML = text.slice(0, index);
-      index--;
-
-      if (index < 0) {
-        isDeleting = false;
-        count++;
-      }
+    if (index > text.length) {
+      isDeleting = true;
+      setTimeout(typeLoop, 1000);
+      return;
     }
+  } else {
+    title.textContent = text.slice(0, index);
+    index--;
 
-    const speed = isDeleting ? eraseSpeed : typingSpeed;
-    setTimeout(typeLoop, speed);
+    if (index < 0) {
+      isDeleting = false;
+      count++;
+    }
   }
 
-  window.onload = typeLoop;
+  const speed = isDeleting ? eraseSpeed : typingSpeed;
+  setTimeout(typeLoop, speed);
+}
 
-
-
+window.onload = typeLoop;
 
 
 
@@ -68,7 +64,7 @@ btn.addEventListener("click", () => {
  
   const scrollBtn = document.getElementById("scrollTopBtn");
 
-  // Show button after scrolling down 200px
+  
   window.addEventListener("scroll", () => {
     if (window.scrollY > 200) {
       scrollBtn.classList.remove("hidden");
@@ -77,7 +73,7 @@ btn.addEventListener("click", () => {
     }
   });
 
-  // Scroll to top smoothly
+ 
   scrollBtn.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
@@ -89,3 +85,5 @@ btn.addEventListener("click", () => {
   
 
   // scroll to top button script end  
+
+  
